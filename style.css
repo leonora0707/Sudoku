@@ -1,0 +1,30 @@
+#sudoku_campus {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr); /* 9列 */
+    grid-template-rows: repeat(9, 1fr); /* 9行 */
+    width: 450px; /* グリッド全体の幅 */
+    height: 450px; /* グリッド全体の高さ */
+    margin: 20px auto;
+    border: 3px solid #000; /* 外枠 */
+    box-sizing: border-box; /* 境界線を含む */
+}
+
+.sudoku_item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    border: 1px solid #ccc; /* 通常のセル枠 */
+    box-sizing: border-box; /* 枠線を含む */
+}
+
+/* 縦方向の太い線を追加 */
+.sudoku_item:nth-child(3n+1) {
+    border-left: 3px solid #000; /* 3列目ごとに太線を表示 */
+}
+
+/* 横方向の太い線を追加 */
+.sudoku_item:nth-child(n+28):nth-child(-n+36),
+.sudoku_item:nth-child(n+55):nth-child(-n+63){
+    border-top: 3px solid #000; /* 3行目ごとに太線を表示 */
+}

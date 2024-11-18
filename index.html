@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数独</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="sudoku.js"></script>
+<body>
+    <div id="container">
+        <button type="button" id="start">スタート</button>
+        <button type="button" id="end">エンド</button>
+        <select name="level" id="level">
+            <option value="20">初級</option>
+            <option value="30">中級</option>
+            <option value="40">上級</option>
+            <option value="50">鬼級</option>
+        </select>
+        <div id="sudoku_campus"></div>
+    </div>
+</body>
+<script>
+    $(function () {
+        let sudoku = new Sudoku();
+        $('#start').click(function () {
+            sudoku = new Sudoku();
+            sudoku.FillGrid(0, 0);
+            sudoku.RemoveNumbers($('#level').val());
+            $('.sudoku_item').remove();
+            for (var i = 0; i < 9; i++) {
+                for (var j = 0; j < 9; j++) {
+                    const sudoku_item = $('<div>')
+                        .attr('class', 'sudoku_item')
+                        .text(sudoku.question_display[i][j] === 0 ? '' : sudoku.question_display[i][j]);
+                    $('#sudoku_campus').append(sudoku_item);
+                }
+            }
+        });
+    });
+</script>
+</html>
+ 
