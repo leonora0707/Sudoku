@@ -23,6 +23,7 @@
         <div class="sudoku_num">2</div>
         <div class="sudoku_num">3</div>
         <div class="sudoku_num">4</div>
+        <div class="sudoku_num">5</div>
         <div class="sudoku_num">6</div>
         <div class="sudoku_num">7</div>
         <div class="sudoku_num">8</div>
@@ -33,6 +34,13 @@
 <script>
     $(function () {
         let sudoku = new Sudoku();
+
+        // 数字ボタンのクリックイベント
+        $('.sudoku_num').click(function () {
+            $('.sudoku_num').removeClass('active'); // 全てのボタンを無効にする
+            $(this).toggleClass('active'); // クリックされたボタンを有効にする
+        });
+
         $('#start').click(function () {
             sudoku = new Sudoku();
             sudoku.FillGrid(0, 0);
