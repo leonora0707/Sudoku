@@ -66,6 +66,23 @@
             // 数字ボタンのクリックイベント
             $('.sudoku_num').click(function () {
                 $('.sudoku_item.active.empty').text($(this).text());
+                console.log($('.sudoku_item').text());
+            });
+
+            $('#end').click(function () {
+                const grid = [];
+                let row = [];
+                $('.sudoku_item').each(function (index) {
+                    const value = $(this).text();
+                    row.push(value === '' ? 0 : parseInt(value, 10)); // 空白なら0、それ以外は数値として追加
+
+                    // 9列ごとに1行として保存
+                    if ((index + 1) % 9 === 0) {
+                        grid.push(row);
+                        row = [];
+                    }
+                });
+                
             });
         });
     });

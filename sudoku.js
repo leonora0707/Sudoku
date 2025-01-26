@@ -80,7 +80,7 @@ class Sudoku
     {
         let removed = 0;
         this.question_display = JSON.parse(JSON.stringify(this.question));
-
+        console.table(this.question_display);
         while (removed < count) {
             // ランダムにセルを選択
             const row = Math.floor(Math.random() * 9);
@@ -93,4 +93,12 @@ class Sudoku
             }
         }
     }
+
+    MatchAnswers(grid)
+    {
+        
+    }
+
+
+
 }
