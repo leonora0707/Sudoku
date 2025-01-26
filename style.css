@@ -34,6 +34,12 @@ body {
     font-size: 18px;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.sudoku_item.active {
+    background-color: #ffeb3b;
 }
 
 .sudoku_item:nth-child(3n+1) {
@@ -74,14 +80,13 @@ body {
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
-.sudoku_num:active {
-    transform: scale(0.95);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.sudoku_num.active {
+/* .sudoku_num.active {
     background: linear-gradient(135deg, #ff9800, #ffc107);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+} */
+
+.full{
+    color: blue;
 }
 
 button {

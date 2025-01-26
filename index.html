@@ -19,28 +19,24 @@
             <option value="50">鬼級</option>
         </select>
         <div id="sudoku_campus"></div>
-        <div class="sudoku_num">1</div>
-        <div class="sudoku_num">2</div>
-        <div class="sudoku_num">3</div>
-        <div class="sudoku_num">4</div>
-        <div class="sudoku_num">5</div>
-        <div class="sudoku_num">6</div>
-        <div class="sudoku_num">7</div>
-        <div class="sudoku_num">8</div>
-        <div class="sudoku_num">9</div>
-        
+        <div class="sudoku_num_container">
+            <div class="sudoku_num">1</div>
+            <div class="sudoku_num">2</div>
+            <div class="sudoku_num">3</div>
+            <div class="sudoku_num">4</div>
+            <div class="sudoku_num">5</div>
+            <div class="sudoku_num">6</div>
+            <div class="sudoku_num">7</div>
+            <div class="sudoku_num">8</div>
+            <div class="sudoku_num">9</div>
+        </div>
     </div>
 </body>
 <script>
     $(function () {
         let sudoku = new Sudoku();
 
-        // 数字ボタンのクリックイベント
-        $('.sudoku_num').click(function () {
-            $('.sudoku_num').removeClass('active'); // 全てのボタンを無効にする
-            $(this).toggleClass('active'); // クリックされたボタンを有効にする
-        });
-
+        // スタートボタンのクリックイベント
         $('#start').click(function () {
             sudoku = new Sudoku();
             sudoku.FillGrid(0, 0);
@@ -48,12 +44,29 @@
             $('.sudoku_item').remove();
             for (var i = 0; i < 9; i++) {
                 for (var j = 0; j < 9; j++) {
-                    const sudoku_item = $('<div>')
-                        .attr('class', 'sudoku_item')
-                        .text(sudoku.question_display[i][j] === 0 ? '' : sudoku.question_display[i][j]);
+                    const sudoku_item = $('<div>').attr('class', 'sudoku_item')
+                    if(sudoku.question_display[i][j] === 0)
+                    {
+                        sudoku_item.addClass('empty').text('');
+                    }
+                    else
+                    {
+                        sudoku_item.addClass('full').text(sudoku.question_display[i][j]);
+                    }
                     $('#sudoku_campus').append(sudoku_item);
                 }
             }
+
+            // グリッドのセルクリックイベントを追加
+            $('.sudoku_item.empty').click(function () {
+                $('.sudoku_item.empty').removeClass('active');
+                $(this).toggleClass('active');
+            });
+
+            // 数字ボタンのクリックイベント
+            $('.sudoku_num').click(function () {
+                $('.sudoku_item.active.empty').text($(this).text());
+            });
         });
     });
 </script>
