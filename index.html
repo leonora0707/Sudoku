@@ -44,7 +44,11 @@
             $('.sudoku_item').remove();
             for (var i = 0; i < 9; i++) {
                 for (var j = 0; j < 9; j++) {
-                    const sudoku_item = $('<div>').attr('class', 'sudoku_item')
+                    const sudoku_item = $('<div>')
+                        .attr('class', 'sudoku_item')
+                        .attr('data-row', i) // 行番号を設定
+                        .attr('data-col', j) // 列番号を設定
+                        .attr('tabindex', '0'); // キーボード操作を可能にする
                     if(sudoku.question_display[i][j] === 0)
                     {
                         sudoku_item.addClass('empty').text('');
@@ -61,6 +65,19 @@
             $('.sudoku_item.empty').click(function () {
                 $('.sudoku_item.empty').removeClass('active');
                 $(this).toggleClass('active');
+            });
+
+            // セルのキーボード入力イベント
+            $('.sudoku_item.empty').keydown(function (e) {
+                const key = e.key;
+
+                if (/^[1-9]$/.test(key)) {
+                    // 数字キーの入力を反映
+                    $(this).text(key);
+                } else if (key === 'Backspace' || key === 'Delete') {
+                    // BackspaceまたはDeleteキーで内容を削除
+                    $(this).text('');
+                }
             });
 
             // 数字ボタンのクリックイベント
@@ -82,7 +99,7 @@
                         row = [];
                     }
                 });
-                
+
             });
         });
     });
