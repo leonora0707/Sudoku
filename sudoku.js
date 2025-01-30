@@ -95,6 +95,8 @@ class Sudoku
 
     MatchAnswers(grid)
     {
-
+        console.table(grid);
+        console.table(this.question);
+        console.log(JSON.stringify(grid) == JSON.stringify(this.question));
     }
 }
