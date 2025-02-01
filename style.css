@@ -42,6 +42,7 @@ body {
     background-color: #ffeb3b;
 }
 
+/* 3×3の枠を強調 */
 .sudoku_item:nth-child(3n+1) {
     border-left: 3px solid #000;
 }
@@ -51,6 +52,7 @@ body {
     border-top: 3px solid #000;
 }
 
+/* 数字ボタンの配置 */
 .sudoku_num_container {
     display: flex;
     justify-content: center;
@@ -85,7 +87,7 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-.full{
+.full {
     color: blue;
 }
 
@@ -110,4 +112,36 @@ select {
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+/* 📱 スマホ用の調整 */
+@media screen and (max-width: 480px) {
+    #container {
+        max-width: 95vw;
+    }
+
+    #sudoku_campus {
+        width: 90vw;
+        height: 90vw;
+    }
+
+    .sudoku_item {
+        font-size: 14px;
+    }
+
+    /* 数字ボタンを3×3のグリッド配置 */
+    .sudoku_num_container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 5px;
+        width: 90vw;
+        max-width: 300px;
+        margin: 10px auto;
+    }
+
+    .sudoku_num {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        font-size: 16px;
+    }
 }
