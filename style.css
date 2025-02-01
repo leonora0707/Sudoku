@@ -80,10 +80,10 @@ body {
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* .sudoku_num.active {
+.sudoku_num.active {
     background: linear-gradient(135deg, #ff9800, #ffc107);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-} */
+}
 
 .full{
     color: blue;

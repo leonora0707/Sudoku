@@ -95,8 +95,21 @@ class Sudoku
 
     MatchAnswers(grid)
     {
-        console.table(grid);
-        console.table(this.question);
-        console.log(JSON.stringify(grid) == JSON.stringify(this.question));
+        const judge = JSON.stringify(grid) == JSON.stringify(this.question);
+        let missCount = 0;
+        for(let i = 0; i < 9; i++){
+            for(let l = 0; l < 9; l++){
+                if(this.question[i][l] != grid[i][l]){
+                    missCount++;
+                }
+            }
+        }
+
+        if(judge){
+            alert("正解です。");
+        }
+        else{
+            alert(missCount + "箇所間違えています。");
+        }
     }
 }
