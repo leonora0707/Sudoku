@@ -27,10 +27,6 @@ A simple and interactive Sudoku game built with HTML, CSS, and JavaScript. This 
 - CSS3 (Responsive styling with media queries)
 - JavaScript (Game logic and event handling)
 
-## Screenshots
-![Sudoku Game]([https://via.placeholder.com/800x400](https://leonora0707.github.io/Sudoku/))  
-*Screenshot of the Sudoku game interface.*
-
 ## License
 This project is licensed under the MIT License.
 
