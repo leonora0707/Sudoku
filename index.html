@@ -34,6 +34,7 @@
             <div class="sudoku_num">7</div>
             <div class="sudoku_num">8</div>
             <div class="sudoku_num">9</div>
+            <div class="sudoku_num">×</div>
         </div>
     </div>
 </body>
@@ -85,9 +86,16 @@
                 }
             });
 
-            // 数字ボタンのクリックイベント
+            // 数字、クリアボタンのクリックイベント
             $('.sudoku_num').click(function () {
-                $('.sudoku_item.active.empty').text($(this).text());
+                if($(this).text() == '×'){
+                    //クリアボタン押下
+                    $('.sudoku_item.active.empty').text('');
+                }
+                else{
+                    //数字ボタン押下
+                    $('.sudoku_item.active.empty').text($(this).text());
+                }
             });
 
             // TODO 数字固定入力モード
